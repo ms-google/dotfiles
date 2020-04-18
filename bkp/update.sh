@@ -18,8 +18,14 @@ case $1 in
         git_update ;;
     --zsh ) 
         zsh_update ;;
+    --imgur )
+        imgur_update ;;
+    --visdom )
+        visdom_update ;;
     --vscode )
         vscode_update ;;
+    --rmate )
+        rmate_update ;;
     --ranger )
         ranger_update ;;
     --terminator )
