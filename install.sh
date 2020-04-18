@@ -139,7 +139,7 @@ i3_update() {
 }
 
 binary_update() {
-    for BIN in $CONFIGDIR/bin/*; do cp $BIN /usr/bin/$(basename $BIN) && chmod +x /usr/bin/$(basename $BIN); done                                       
+    for BIN in $CONFIGDIR/bin/*; do cp $BIN /usr/bin/$(basename $BIN) && chmod +x /usr/bin/$(basename $BIN); done
 }
 
 # Call all common update functions
