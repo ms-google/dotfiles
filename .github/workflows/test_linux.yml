@@ -2,13 +2,13 @@ name: Test on Linux
 
 on:
   pull_request:
-    branches: ["master"]
+    branches: ['master']
     paths:
-      - ".*"
+      - '*'
   push:
-    branches: ["master"]
+    branches: ['master']
     paths:
-      - ".*"
+      - '*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
