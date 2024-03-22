@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
-      run: echo "Only on featuer branches"
+      run: echo "Only on featuer branchs"
     - name: Run a multi-line script
       run: |
         echo "Only on featuer branches1"
