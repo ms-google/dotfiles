@@ -14,12 +14,16 @@
 #####################################################
 
 
-URL=https://github.com/ms-google/config.git
+BRANCH=master
+URL=https://github.com/ms-google/config/archive/refs/heads/${BRANCH}.zip
 CONFIGDIR=$HOME/.mconfig
 
 basic_update () {
+    sudo apt install -y --no-install-recommends git unzip wget
     if [ ! -d "$CONFIGDIR" ] ; then
         echo "Config repo doesn't exist at $CONFIGDIR, cloning";
+        wget $URL /tmp/ && unzip /tmp/${BRANCH}.zip
+        mv /tmp/config-${BRANCH} $CONFIGDIR
         git clone "$URL" "$CONFIGDIR";
     else
         echo "Config repo exists at $CONFIGDIR, checking for updates";
@@ -32,7 +36,6 @@ dependencies_ubuntu () {
     # Install neovim / vim 8.0
     sudo apt install -y --no-install-recommends neovim vim
     sudo apt install -y --no-install-recommends ncdu tmux ranger w3m curl htop
-    sudo apt install -y 
     echo "Dependencies installed";
 }
 
