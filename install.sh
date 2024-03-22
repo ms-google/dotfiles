@@ -102,9 +102,7 @@ vim_update() {
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-    nvim +silent +VimEnter +PackerCompile +qall
-    nvim +silent +VimEnter +PackerInstall +qall
-
+    nvim -u $HOME/.config/nvim/lua/init.lua --headless "+Lazy! sync" +qa
     echo "vim updated";
 }
 
@@ -112,8 +110,8 @@ common_update() {
     basic_update
     dependencies_ubuntu
     zsh_update
-    tmux_update
     vim_update
+    tmux_update
 }
 
 # Call device specific functions
