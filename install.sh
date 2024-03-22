@@ -50,7 +50,7 @@ config_updates() {
 }
 
 zsh_update() {
-    sudo apt install -y zsh fonts-font-awesome
+    sudo apt install -y zsh fonts-font-awesome fzf
     whoami | xargs -n 1 sudo chsh -s $(which zsh) $1
 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -89,6 +89,23 @@ i3_update() {
     mkdir -p $HOME/.config/i3
     cp $CONFIGDIR/i3/*confg $HOME/.config/i3/
     echo "i3 updated";
+}
+
+vim_update() {
+    mkdir -p $HOME/.config/nvim/plugin
+    mkdir -p $HOME/.config/nvim/colors
+    mkdir -p $HOME/.config/nvim/lua
+
+    cp $CONFIGDIR/nvim/colors/monokai.vim $HOME/.config/nvim/colors/
+    cp $CONFIGDIR/nvim/lua/* $HOME/.config/nvim/lua/
+
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+    nvim +silent +VimEnter +PackerCompile +qall
+    nvim +silent +VimEnter +PackerInstall +qall
+
+    echo "vim updated";
 }
 
 common_update() {
