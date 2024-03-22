@@ -29,10 +29,8 @@ basic_update () {
 }
 
 dependencies () {
-    # Install Vim 8.0
-    sudo add-apt-repository --yes --force-yes ppa:jonathonf/vim
-    sudo apt update --force-yes
-    sudo apt install -y --no-install-recommends vim
+    # Install neovim / vim 8.0
+    sudo apt install -y --no-install-recommends neovim vim
 
     # Install misc stuff
     sudo apt-get install -y --no-install-recommends ncdu tmux ranger w3m curl htop
