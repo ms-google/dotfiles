@@ -14,7 +14,7 @@
 #####################################################
 
 
-URL=https://github.com/meetps/config.git
+URL=https://github.com/ms-google/config.git
 CONFIGDIR=$HOME/.mconfig
 
 basic_update () {

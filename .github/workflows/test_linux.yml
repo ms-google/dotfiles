@@ -1,0 +1,28 @@
+name: Test on Linux
+
+on:
+  pull_request:
+    branches: ["master"]
+    paths:
+      - ".*"
+  push:
+    branches: ["master"]
+    paths:
+      - ".*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test_on_linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run install.sh
+        run: |
+          set -e
+          export CI=1
+          git submodule update --init
+          bash install.sh
